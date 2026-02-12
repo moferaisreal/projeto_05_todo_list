@@ -1,0 +1,71 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import Tarefa from "models/Tarefa";
+import * as enums from "../../utils/enums/Tarefa";
+
+type TarefasState = {
+  itens: Tarefa[];
+};
+const initialState: TarefasState = {
+  itens: [
+    {
+      id: 1,
+      title: "Exemplo 1",
+      status: enums.Status.PENDENTE,
+      category: enums.Category.IMPORTANTE,
+      descrptn: "lorem",
+    },
+    {
+      id: 3,
+      title: "Exemplo 2",
+      status: enums.Status.PENDENTE,
+      category: enums.Category.NORMAL,
+      descrptn: "lorem",
+    },
+    {
+      id: 2,
+      title: "Exemplo 3",
+      status: enums.Status.PENDENTE,
+      category: enums.Category.URGENTE,
+      descrptn: "lorem",
+    },
+    {
+      id: 4,
+      title: "Exemplo 4",
+      status: enums.Status.CONCLUIDA,
+      category: enums.Category.IMPORTANTE,
+      descrptn: "lorem",
+    },
+    {
+      id: 5,
+      title: "Exemplo 5",
+      status: enums.Status.CONCLUIDA,
+      category: enums.Category.URGENTE,
+      descrptn: "lorem",
+    },
+    {
+      id: 6,
+      title: "Exemplo 6",
+      status: enums.Status.CONCLUIDA,
+      category: enums.Category.NORMAL,
+      descrptn: "lorem",
+    },
+  ],
+};
+export const tarefasSlice = createSlice({
+  name: "tasks",
+  initialState: initialState,
+  reducers: {
+    // addTarefa: (state, action: PayloadAction<Tarefa>) => {
+    //   state.push(action.payload);
+    // },
+    remover: (state, action: PayloadAction<number>) => {
+      state.itens = state.itens.filter(
+        (tarefa) => tarefa.id !== action.payload,
+      );
+    },
+  },
+});
+
+export const { remover } = tarefasSlice.actions;
+
+export default tarefasSlice.reducer;

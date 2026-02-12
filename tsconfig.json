@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler", // Modern replacement for node10; fixes resolution
     "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx", // Automatic JSX runtime
+    "noEmit": true, // Keep if using relative imports; not deprecated
+    "paths": {
+      // If needed for aliases, e.g., "@components/*": ["src/components/*"]
+      "*": ["src/*"]
+    },
+    "types": ["node"] // Add "vitest/globals" if using Vitest tests
   },
   "include": [
-    "src"
-  ]
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "rsbuild.config.ts",
+    "eslint.config.mjs"
+  ], // Add configs if linting them
+  "exclude": ["node_modules", "build"],
+  "ignoreDeprecations": "5.0" // Silences until full migration
 }
