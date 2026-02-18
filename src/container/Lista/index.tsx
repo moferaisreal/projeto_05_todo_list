@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootReducer } from "../../store";
 import Task from "components/Task";
-import { Container, Results } from "./styles";
+import { MainContainer, Titulo } from "../../styles";
 import { Category } from "utils/enums/Tarefa";
 
 const ListaTarefas = () => {
@@ -37,9 +37,9 @@ const tarefas = filterTasks()
 const mensagem = showResults(tarefas.length)
 
   return (
-    <Container>
-      <Results>{mensagem}
-      </Results>
+    <MainContainer>
+      <Titulo as="p">{mensagem}
+      </Titulo>
       <ul>
         {tarefas.map((t) => (
           <li key={t.title}>
@@ -53,7 +53,7 @@ const mensagem = showResults(tarefas.length)
           </li>
         ))}
       </ul>
-    </Container>
+    </MainContainer>
   );
 };
 export default ListaTarefas;

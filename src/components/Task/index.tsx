@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import TaskClass from "../../models/Tarefa";
 import { editar, remover } from "../../store/reducers/tarefas";
 import * as S from "./styles";
+import { Botao } from "../../styles";
+
 
 type TaskProps = TaskClass;
 
@@ -52,7 +54,7 @@ const Task = ({ title, category, status, descrptn: Og, id }: TaskProps) => {
           </>
         ) : (
           <>
-            <S.Botao onClick={() => setIsEditing(true)}>Editar</S.Botao>
+            <Botao onClick={() => setIsEditing(true)}>Editar</Botao>
             <S.BtnCancelRemv onClick={() => dispatch(remover(id))}>
               Excluir
             </S.BtnCancelRemv>

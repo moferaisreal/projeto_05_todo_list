@@ -1,5 +1,6 @@
 export default {
   bgpage: '#ffffff',
+  bgsecondary: '#4b4b4b',
   textprimary: '#3d3d3d',
   textsecondary: '#4b4b4b',
   borderlight: '#ffcccc',

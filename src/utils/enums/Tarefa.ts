@@ -1,6 +1,6 @@
 
 export enum Category {
-  URGENTE = 'URGENTE !!!',
+  URGENTE = 'urgente',
   IMPORTANTE = 'importante',
   NORMAL = 'normal',
 }

@@ -71,9 +71,17 @@ export const tarefasSlice = createSlice({
         state.itens[indexTarefa] = action.payload;
       }
     },
+    cadastrar: (state, action: PayloadAction<Tarefa>) =>{
+      const findDuplicate = state.itens.find((tarefa => tarefa.title.toLowerCase() === action.payload.title.toLowerCase()))
+      if (findDuplicate) {
+        alert("Tarefa já existe!!!")
+      } else {
+        state.itens.push(action.payload)
+      }
+    }
   },
 });
 
-export const { remover, editar } = tarefasSlice.actions;
+export const { remover, editar, cadastrar } = tarefasSlice.actions;
 
 export default tarefasSlice.reducer;

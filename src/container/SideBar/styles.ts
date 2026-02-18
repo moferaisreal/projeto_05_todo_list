@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import * as variables from "../../styles/variables"
 
 export const Aside = styled.aside`
 padding: 16px;
-background-color: #eee;
+background-color: ${variables.default.bgsecondary};
 height: 100vh;
 `
 
@@ -13,12 +14,4 @@ grid-gap: 8px;
 margin-top: 16px;
 `
 
-export const Campo = styled.input`
-width: 100%;
-background-color: #fff;
-font-weight: bold;
-color: #666666;
-padding: 8px;
-border-color: #666666 ;
-border-radius: 8px;
-`
+
