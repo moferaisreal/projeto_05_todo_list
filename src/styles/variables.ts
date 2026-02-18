@@ -3,7 +3,7 @@ export default {
   textprimary: '#3d3d3d',
   textsecondary: '#4b4b4b',
   borderlight: '#ffcccc',
-
+  borderdark: '#fff200',
   /* Status */
   statuspendente: '#7d5fff',
   statusconcluida: '#3ae374',
