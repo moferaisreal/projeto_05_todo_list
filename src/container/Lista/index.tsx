@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootReducer } from "../../store";
 import Task from "components/Task";
-import { Container } from "./styles";
+import { Container, Results } from "./styles";
 import { Category } from "utils/enums/Tarefa";
 
 const ListaTarefas = () => {
@@ -23,19 +23,25 @@ const ListaTarefas = () => {
       return itens
     }
 }
+const showResults = (qtd: number) => {
+  let message = ''
+  const messageTermo = termo !== undefined && termo.length > 0 ? ` e "${termo}"`: ''
+if(criterio === 'todas'){
+  message = `${qtd} são todas as tarefa(s) ${messageTermo}`
+} else {
+  message = `${qtd} tarefa(s) marcadas como: "${`${criterio}=${valor}`}"${messageTermo}`
+}
+  return message
+}
+const tarefas = filterTasks()
+const mensagem = showResults(tarefas.length)
 
   return (
     <Container>
-      <p>
-        2 tarefas marcadas como: &quot;categoria &rdquo; e &quot;{termo}&rdquo;
-      </p>
+      <Results>{mensagem}
+      </Results>
       <ul>
-        <li >{termo}</li>
-        <li >{criterio}</li>
-        <li >{valor}</li>
-      </ul>
-      <ul>
-        {filterTasks().map((t) => (
+        {tarefas.map((t) => (
           <li key={t.title}>
             <Task
               id={t.id}
