@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import TaskClass from "../../models/Tarefa";
-import { editar, remover } from "../../store/reducers/tarefas";
-import * as S from "./styles";
+import { editar, remover, alterarStatus } from "../../store/reducers/tarefas";
 import { Botao } from "../../styles";
-
+import * as S from "./styles";
+import * as enums from "../../utils/enums/Tarefa";
 
 type TaskProps = TaskClass;
 
@@ -24,9 +24,24 @@ const Task = ({ title, category, status, descrptn: Og, id }: TaskProps) => {
     setDescr(Og);
   }
 
+  function alterarStatusTarefa(e: ChangeEvent<HTMLInputElement>) {
+    dispatch(alterarStatus({ id, finalizado: e.target.checked }));
+  }
+
   return (
     <S.Card>
-      <S.Title>{title}</S.Title>
+      <label htmlFor="title">
+        <input
+          type="checkbox"
+          checked={status === enums.Status.CONCLUIDA}
+          onChange={alterarStatusTarefa}
+          id={title}
+        />
+      </label>
+      <S.Title>
+        {isEditing && <em>Editando...</em>}
+        {title}
+      </S.Title>
       <S.Tag parametro="category" category={category}>
         {" "}
         {category}
@@ -45,7 +60,7 @@ const Task = ({ title, category, status, descrptn: Og, id }: TaskProps) => {
             <S.BtnSave
               onClick={() => {
                 dispatch(editar({ descrptn, id, category, status, title }));
-                setIsEditing(false)
+                setIsEditing(false);
               }}
             >
               Salvar

@@ -3,7 +3,7 @@ import Sidebar from "container/SideBar";
 
 const Cadastro = () => (
     <>
-    <Sidebar />
+    <Sidebar showFilter={false} />
     <FormCadastro />
   </>
 );

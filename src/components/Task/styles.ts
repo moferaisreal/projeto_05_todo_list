@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { Botao } from "../../styles";
 import * as variables from "../../styles/variables";
 import * as enums from "../../utils/enums/Tarefa";
-import { Botao } from "../../styles";
 
 type TagProps = {
   category?: enums.Category;
@@ -32,12 +32,17 @@ export const Card = styled.div`
   background-color: ${variables.default.bgsecondary};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 1rem;
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 `;
 export const Title = styled.h3`
   font-size: 1.25rem;
   font-weight: bold;
+  margin-left: .5rem;
   color: ${variables.default.textondark};
-  margin-bottom: 1rem;
 `;
 export const Tag = styled.span<TagProps>`
   font-weight: bold;

@@ -1,11 +1,10 @@
 import { SubmitEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { MainContainer, Titulo, Campo, Botao } from "../../styles";
-import { FormContainer, Options, Option } from "./styles";
-import * as enums from "../../utils/enums/Tarefa";
-import Task from "models/Tarefa";
+import { useNavigate } from "react-router-dom";
 import { cadastrar } from "../../store/reducers/tarefas";
+import { Botao, Campo, MainContainer, Titulo } from "../../styles";
+import * as enums from "../../utils/enums/Tarefa";
+import { FormContainer, Option, Options } from "./styles";
 
 const FormCadastro = () => {
   const dispatch = useDispatch();
@@ -16,15 +15,16 @@ const FormCadastro = () => {
 
   const newTask = (e: SubmitEvent) => {
     e.preventDefault();
-    const addTask = new Task(
-      titulo,
-      category,
-      enums.Status.PENDENTE,
-      descricao,
-      9,
+
+    dispatch(
+      cadastrar({
+        title: titulo,
+        category,
+        status: enums.Status.PENDENTE,
+        descrptn: descricao
+      })
     );
-    dispatch(cadastrar(addTask))
-    navigate('/')
+    navigate('/');
   };
 
   return (
